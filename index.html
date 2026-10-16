@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haaris S · Portfolio</title>
+<meta name="description" content="Haaris S, first-year B.Tech IT student. Portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ===== Palette: ink, bone, marigold ===== */
+:root{
+  --ink:#16130f; --ink2:#221e18; --bone:#eadfc6; --dim:#a89f8a; --gold:#e8a317;
+  --bar:clamp(30px,6.5vh,56px);
+  --display:"Bebas Neue","Arial Narrow",Impact,sans-serif;
+  --type:"Courier Prime","Courier New",monospace;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--ink)}
+body{background:var(--ink);color:var(--bone);font-family:var(--type);font-size:1.02rem;line-height:1.7;
+  padding:var(--bar) 0;overflow-x:hidden;-webkit-text-size-adjust:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+/* film grain */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:40;opacity:.09;mix-blend-mode:screen;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1s steps(4) infinite}
+@keyframes grain{25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}
+
+/* ===== Letterbox bars ===== */
+.bar{position:fixed;left:0;right:0;height:var(--bar);background:#000;z-index:30;display:flex;align-items:center;
+  justify-content:space-between;padding:0 clamp(14px,4vw,40px);font-size:.78rem;color:var(--dim);font-style:italic}
+.bar.top{top:0}.bar.bot{bottom:0}
+.bar b{font-style:normal;font-weight:400;color:var(--gold);transition:opacity .3s}
+.bar .tc{font-style:normal;font-variant-numeric:tabular-nums}
+
+/* ===== Opening ===== */
+#intro{position:fixed;inset:0;z-index:60;background:#000;display:grid;place-items:center;padding:24px;
+  transition:opacity .55s ease,visibility .55s}
+#intro.gone{opacity:0;visibility:hidden}
+#intro p{font-size:clamp(1.1rem,4.6vw,1.9rem);max-width:22ch;text-align:left;min-height:3.4em;color:var(--bone)}
+#intro p::after{content:"";display:inline-block;width:.55em;height:1.05em;background:var(--gold);margin-left:4px;vertical-align:-.15em;animation:blink .7s steps(1) infinite}
+#intro.fade p{opacity:0;transition:opacity .5s}
+@keyframes blink{50%{opacity:0}}
+#skip{position:fixed;right:clamp(14px,4vw,40px);bottom:calc(var(--bar) + 14px);z-index:70;background:none;border:1px solid var(--dim);
+  color:var(--bone);font:inherit;font-size:.82rem;padding:.4rem .9rem;cursor:pointer;transition:background .2s,color .2s}
+#skip:hover{background:var(--bone);color:var(--ink)}
+#skip.gone{display:none}
+
+/* ===== Layout ===== */
+section{padding:clamp(72px,14vh,150px) clamp(18px,6vw,80px);position:relative}
+.scene{display:grid;gap:clamp(24px,5vw,60px);max-width:1180px;margin:0 auto}
+@media(min-width:860px){.scene{grid-template-columns:minmax(180px,.55fr) 1.6fr}}
+.slate{align-self:start}
+@media(min-width:860px){.slate{position:sticky;top:calc(var(--bar) + 40px)}}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(3.2rem,11vw,6.6rem);line-height:.9;letter-spacing:.01em;color:var(--bone)}
+.slate small{display:block;margin-top:.8rem;color:var(--gold);font-size:.9rem;font-style:italic}
+.wrap{max-width:1180px;margin:0 auto}
+p+p{margin-top:1.1em}
+.prose{max-width:58ch;font-size:1.06rem}
+.prose p:first-child::first-line{color:var(--gold)}
+
+/* ===== Hero ===== */
+#hero{min-height:calc(100svh - 2*var(--bar));display:flex;flex-direction:column;justify-content:center;padding-top:40px;padding-bottom:40px}
+.credit{color:var(--dim);font-style:italic;font-size:.92rem;margin-bottom:.4rem}
+.name{font-family:var(--display);font-weight:400;line-height:.78;font-size:clamp(5.6rem,31vw,19rem);letter-spacing:-.005em;margin-left:-.04em}
+.name span{display:block}
+.name .s{color:transparent;-webkit-text-stroke:2px var(--gold);padding-left:.5em}
+.mono{position:absolute;right:clamp(18px,6vw,80px);top:clamp(20px,6vh,60px);width:clamp(86px,19vw,170px)}
+.mono svg{width:100%;height:auto;display:block;cursor:pointer;overflow:visible}
+.mono .sweep{transform-origin:50% 50%;animation:sweep 4s linear infinite}
+@keyframes sweep{to{transform:rotate(360deg)}}
+.tag{max-width:34ch;font-size:clamp(1.05rem,3.6vw,1.35rem);margin-top:clamp(20px,4vh,40px);line-height:1.5}
+.now{margin-top:1.2rem;color:var(--dim);font-size:.95rem;display:flex;gap:.7rem;align-items:baseline}
+.now i{width:.6rem;height:.6rem;border-radius:50%;background:var(--gold);flex:none;transform:translateY(-1px);animation:rec 1.6s ease-in-out infinite}
+@keyframes rec{50%{opacity:.25}}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(24px,5vh,44px)}
+.btn{font:inherit;font-weight:700;text-decoration:none;padding:.85rem 1.7rem;border:2px solid var(--gold);cursor:pointer;
+  transition:background .25s var(--ease),color .25s var(--ease),transform .25s var(--ease);display:inline-block}
+.btn.fill{background:var(--gold);color:var(--ink)}
+.btn.line{background:none;color:var(--gold)}
+.btn:hover{transform:translateY(-3px)}
+.btn.fill:hover{background:var(--bone);border-color:var(--bone)}
+.btn.line:hover{background:var(--gold);color:var(--ink)}
+/* hero entrance: one orchestrated moment */
+.pre .name span,.pre .credit,.pre .tag,.pre .now,.pre .btns,.pre .mono{opacity:0}
+.go .credit,.go .tag,.go .now,.go .btns,.go .mono{animation:rise .9s var(--ease) both}
+.go .name span{animation:title 1.3s var(--ease) both}
+.go .name span+span{animation-delay:.18s}
+.go .credit{animation-delay:.05s}.go .mono{animation-delay:.5s}.go .tag{animation-delay:.7s}.go .now{animation-delay:.85s}.go .btns{animation-delay:1s}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}}
+@keyframes title{from{opacity:0;letter-spacing:.14em;filter:blur(6px)}to{filter:none}}
+
+/* ===== Skills: end-credits roll ===== */
+.roll{list-style:none;max-width:560px}
+.roll h3{font-family:var(--display);font-weight:400;font-size:1.7rem;color:var(--gold);margin:2.2rem 0 .3rem;letter-spacing:.03em}
+.roll h3:first-child{margin-top:0}
+.roll li{display:flex;align-items:baseline;gap:.6rem;padding:.2rem 0}
+.roll li::after{content:"";order:2;flex:1;border-bottom:2px dotted #5a5242;transform:translateY(-4px)}
+.roll li span:first-child{order:1}.roll li span:last-child{order:3;font-style:italic;color:var(--dim)}
+.roll li:hover span:last-child{color:var(--gold)}
+.note{margin-top:2rem;color:var(--dim);font-size:.92rem;max-width:44ch}
+
+/* ===== Journey: film strip ===== */
+.strip{display:grid;gap:0;background:var(--ink2);padding:26px 0;position:relative}
+.strip::before,.strip::after{content:"";position:absolute;left:0;right:0;height:10px;
+  background:repeating-linear-gradient(90deg,var(--ink) 0 14px,transparent 14px 28px)}
+.strip::before{top:8px}.strip::after{bottom:8px}
+.frame{padding:22px clamp(16px,3vw,32px);border-bottom:1px solid #3a3429}
+.frame:last-child{border-bottom:0}
+@media(min-width:860px){.strip{grid-template-columns:repeat(3,1fr)}.frame{border-bottom:0;border-right:1px solid #3a3429}.frame:last-child{border-right:0}}
+.frame h3{font-family:var(--display);font-weight:400;font-size:2.1rem;line-height:1}
+.frame em{display:block;color:var(--gold);font-size:.88rem;margin:.2rem 0 .9rem}
+.frame ul{list-style:none}
+.frame li{padding:.35rem 0 .35rem 1.1rem;position:relative;font-size:.97rem}
+.frame li::before{content:"";position:absolute;left:0;top:1rem;width:.5rem;height:2px;background:var(--gold)}
+.frame:nth-child(2) h3{color:var(--gold)}
+
+/* ===== Flip cards (signature) ===== */
+.facts{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin-top:2rem;perspective:1200px}
+.flip{background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer;height:220px;position:relative;
+  transform-style:preserve-3d;transition:transform .8s var(--ease)}
+.flip:nth-child(2){margin-top:22px}.flip:nth-child(4){margin-top:22px}
+.flip[aria-pressed=true]{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;padding:20px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;justify-content:space-between}
+.front{background:var(--bone);color:var(--ink)}
+.front b{font-family:var(--display);font-weight:400;font-size:2.5rem;line-height:.95}
+.front span{font-size:.85rem;font-style:italic}
+.back{background:var(--ink);border:2px solid var(--gold);transform:rotateY(180deg);justify-content:center;font-size:1rem;line-height:1.55}
+.flip:nth-child(even) .front{background:var(--gold)}
+.flip:hover:not([aria-pressed=true]){transform:rotateY(-12deg)}
+.hint{color:var(--dim);font-size:.9rem;margin-top:1.4rem}
+
+/* ===== Contact ===== */
+.mail{font-family:var(--display);font-size:clamp(2rem,8.5vw,4.6rem);line-height:1;text-decoration:none;display:inline-block;word-break:break-all;
+  border-bottom:3px solid var(--gold);padding-bottom:.1em;transition:color .2s}
+.mail:hover{color:var(--gold)}
+.links{display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:2rem;list-style:none}
+.links a{font-weight:700;text-decoration:none;border-bottom:2px solid transparent;transition:border-color .2s}
+.links a:hover{border-color:var(--gold)}
+.end{text-align:center;padding:clamp(70px,14vh,140px) 20px 40px}
+.end h2{font-size:clamp(4rem,20vw,12rem);letter-spacing:.06em}
+.end p{color:var(--dim);font-style:italic;margin-top:1.2rem;font-size:.92rem}
+
+/* ===== Easter egg: clapperboard ===== */
+#clap{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.88);display:none;place-items:center;padding:20px}
+#clap.on{display:grid}
+.board{width:min(86vw,360px);background:var(--ink2);border:3px solid var(--bone);transform:rotate(-3deg);box-shadow:8px 8px 0 var(--gold)}
+.sticks{height:34px;background:repeating-linear-gradient(115deg,var(--bone) 0 22px,var(--ink) 22px 44px);border-bottom:3px solid var(--bone);transform-origin:0 100%}
+#clap.on .sticks{animation:snap .5s .15s var(--ease) both}
+@keyframes snap{from{transform:rotate(-24deg)}to{transform:rotate(0)}}
+.board div.t{padding:18px 20px 22px}
+.board h4{font-family:var(--display);font-weight:400;font-size:2.6rem;line-height:1}
+.board p{margin-top:.6rem;font-size:.92rem;color:var(--dim)}
+.board button{margin-top:1rem;background:var(--gold);border:0;font:inherit;font-weight:700;padding:.5rem 1rem;cursor:pointer;color:var(--ink)}
+body.flick{animation:flick .5s steps(5)}
+@keyframes flick{20%{filter:invert(1)}40%{filter:none}60%{filter:contrast(2) brightness(1.4)}}
+
+/* reveal on scroll (kept light) */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:480px){.bar .tc{display:none}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  body::after{animation:none}
+  .rv{opacity:1;transform:none}
+  .flip{transform:none!important}
+  .flip .back{transform:none;opacity:0}
+  .flip[aria-pressed=true] .back{opacity:1}.flip[aria-pressed=true] .front{opacity:0}
+}
+</style>
+</head>
+<body class="pre">
+
+<div class="bar top"><span>Haaris S, a first feature</span><b id="scene">Opening titles</b></div>
+<div class="bar bot"><span>Scroll to roll the film</span><span class="tc" id="tc">00:00:00</span></div>
+
+<div id="intro" aria-live="polite"><p id="line" aria-label="Every story starts with one line."></p></div>
+<button id="skip" type="button">Skip</button>
+
+<main>
+<!-- ===== LANDING ===== -->
+<section id="hero" data-scene="Opening titles">
+  <div class="mono" aria-hidden="false">
+    <svg viewBox="0 0 120 120" role="img" aria-label="HS monogram in a film leader circle" id="monogram">
+      <circle cx="60" cy="60" r="54" fill="none" stroke="#eadfc6" stroke-width="3"/>
+      <circle cx="60" cy="60" r="44" fill="none" stroke="#e8a317" stroke-width="1.5"/>
+      <path d="M60 6V114M6 60H114" stroke="#eadfc6" stroke-width="1" opacity=".5"/>
+      <path class="sweep" d="M60 60V8A52 52 0 0 1 100 26Z" fill="#e8a317" opacity=".28"/>
+      <rect x="28" y="40" width="64" height="40" fill="#16130f"/>
+      <text x="60" y="76" text-anchor="middle" font-family="Bebas Neue,Impact,sans-serif" font-size="50" fill="#eadfc6" letter-spacing="1">HS</text>
+    </svg>
+  </div>
+  <p class="credit">A portfolio by</p>
+  <h1 class="name" aria-label="Haaris S"><span>HAARIS</span><span class="s">S.</span></h1>
+  <p class="tag"><!-- EDIT: your own tagline -->First-year IT student who learns by building small things and breaking them.</p>
+  <p class="now"><i></i><span><!-- EDIT: currently -->Currently getting comfortable with JavaScript and writing my first real projects.</span></p>
+  <div class="btns">
+    <a class="btn fill" href="#about">Explore</a>
+    <a class="btn line" href="#contact">Say hi</a>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" data-scene="About">
+  <div class="scene">
+    <div class="slate"><h2>About</h2><small>the director's note</small></div>
+    <div class="prose rv">
+      <!-- EDIT: replace with the story from your Me-Map answers -->
+      <p>I'm Haaris, a first-year B.Tech student in Information Technology in Tamil Nadu. I came into college knowing that I liked computers, and not much else. Every week I find out a little more about what that actually means.</p>
+      <p>What I enjoy most is the moment something I wrote finally works after an hour of not working. I'm still early, so most of what I make is small. I'd rather show you small things that are honestly mine than big things I only half understand.</p>
+      <p>This site is one of them. I picked the look of a film title sequence because I like things that begin with a bit of ceremony and then get out of your way.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills" data-scene="Skills">
+  <div class="scene">
+    <div class="slate"><h2>Skills</h2><small>end credits, honestly rated</small></div>
+    <div class="rv">
+      <!-- EDIT: match to what you actually know -->
+      <ul class="roll">
+        <h3>Languages</h3>
+        <li><span>C</span><span>Comfortable</span></li>
+        <li><span>Python</span><span>Comfortable</span></li>
+        <li><span>JavaScript</span><span>Learning</span></li>
+        <h3>Web</h3>
+        <li><span>HTML and CSS</span><span>Comfortable</span></li>
+        <li><span>Responsive layouts</span><span>Learning</span></li>
+        <h3>Tools</h3>
+        <li><span>Git and GitHub</span><span>Learning</span></li>
+        <li><span>SQL</span><span>Just starting</span></li>
+      </ul>
+      <p class="note">No bars, no percentages. "Comfortable" means I can do it without searching for every line.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== JOURNEY ===== -->
+<section id="journey" data-scene="Journey">
+  <div class="wrap">
+    <div class="slate" style="position:static;margin-bottom:2rem"><h2>Journey</h2><small>three reels</small></div>
+    <div class="strip rv">
+      <!-- EDIT: your real projects -->
+      <div class="frame"><h3>Already shot</h3><em>what I've made</em>
+        <ul><li>Small C programs from lab classes</li><li>A Python script that tidies my files</li><li>This portfolio, by hand</li></ul></div>
+      <div class="frame"><h3>On the editing table</h3><em>what I'm learning</em>
+        <ul><li>JavaScript and the DOM</li><li>Data structures</li><li>Using Git without fear</li></ul></div>
+      <div class="frame"><h3>In the script</h3><em>what I want to build</em>
+        <ul><li>A study planner for my own class timetable</li><li>A small game</li><li>Something useful for my town</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BEYOND CODE ===== -->
+<section id="beyond" data-scene="Beyond code">
+  <div class="wrap">
+    <div class="slate" style="position:static"><h2>Beyond code</h2><small>the part that isn't in the résumé</small></div>
+    <!-- EDIT: swap in your real hobbies and fun facts -->
+    <div class="facts">
+      <button class="flip" type="button" aria-pressed="false"><span class="face front"><b>Off screen</b><span>Tap to turn over</span></span><span class="face back">I'd pick a long walk over scrolling, and I come back with better ideas.</span></button>
+      <button class="flip" type="button" aria-pressed="false"><span class="face front"><b>On repeat</b><span>Tap to turn over</span></span><span class="face back">I code to music I already know by heart. New songs steal my attention.</span></button>
+      <button class="flip" type="button" aria-pressed="false"><span class="face front"><b>First program</b><span>Tap to turn over</span></span><span class="face back">It printed "Hello, World" and I was oddly proud for the rest of the day.</span></button>
+      <button class="flip" type="button" aria-pressed="false"><span class="face front"><b>Unpopular opinion</b><span>Tap to turn over</span></span><span class="face back">Reading error messages slowly solves more bugs than any trick.</span></button>
+    </div>
+    <p class="hint">Four cards. One of them might not be the whole story.</p>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" data-scene="Contact">
+  <div class="scene">
+    <div class="slate"><h2>Say hi</h2><small>casting call</small></div>
+    <div class="rv">
+      <p style="margin-bottom:1.2rem;max-width:40ch">If you're building something, hiring interns, or just know a good resource for beginners, write to me.</p>
+      <!-- EDIT: your real links -->
+      <a class="mail" href="mailto:haaris@example.com">haaris@example.com</a>
+      <ul class="links">
+        <li><a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/your-handle" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="end"><h2 id="theend">The End</h2><p>Directed, written and coded by Haaris S, 2026</p></div>
+</section>
+</main>
+
+<div id="clap" role="dialog" aria-label="Easter egg">
+  <div class="board"><div class="sticks"></div><div class="t">
+    <h4>That's a wrap.</h4><p>You found the hidden take. Scene: Haaris S. Take: 1. Thanks for looking this closely.</p>
+    <button type="button" id="cut">Cut</button></div></div>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var body = document.body, intro = document.getElementById("intro"), skip = document.getElementById("skip");
+  var line = document.getElementById("line"), text = "Every story starts with one line.";
+  var done = false, timers = [];
+
+  function finish(){
+    if(done) return; done = true;
+    timers.forEach(clearTimeout);
+    intro.classList.add("gone"); skip.classList.add("gone");
+    body.classList.remove("pre"); body.classList.add("go");
+    try{ sessionStorage.setItem("seen","1"); }catch(e){}
+  }
+  var seen = false;
+  try{ seen = sessionStorage.getItem("seen") === "1"; }catch(e){}
+  if(reduce || seen){
+    intro.style.transition = "none"; finish();
+  } else {
+    var i = 0;
+    (function tick(){
+      if(done) return;
+      line.textContent = text.slice(0, ++i);
+      if(i < text.length) timers.push(setTimeout(tick, 34));
+      else {
+        timers.push(setTimeout(function(){ intro.classList.add("fade"); }, 450));
+        timers.push(setTimeout(finish, 1000 + 0));
+      }
+    })();
+    skip.addEventListener("click", finish);
+  }
+
+  /* scroll-driven letterbox label + timecode */
+  var sceneLabel = document.getElementById("scene"), tc = document.getElementById("tc");
+  var secs = document.querySelectorAll("section[data-scene]");
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting) sceneLabel.textContent = e.target.dataset.scene; });
+  }, {rootMargin:"-45% 0px -50% 0px"});
+  secs.forEach(function(s){ io.observe(s); });
+  function pad(n){ return (n<10?"0":"")+n; }
+  function stamp(){
+    var max = document.documentElement.scrollHeight - innerHeight;
+    var f = max > 0 ? scrollY / max : 0, t = Math.round(f * 5400); /* a 90-minute feature */
+    tc.textContent = pad(Math.floor(t/3600)) + ":" + pad(Math.floor(t%3600/60)) + ":" + pad(t%60);
+  }
+  addEventListener("scroll", stamp, {passive:true}); stamp();
+
+  /* reveals */
+  var rv = document.querySelectorAll(".rv");
+  if("IntersectionObserver" in window && !reduce){
+    var ro = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); ro.unobserve(e.target); } });
+    }, {threshold:.12});
+    rv.forEach(function(el){ ro.observe(el); });
+  } else rv.forEach(function(el){ el.classList.add("in"); });
+
+  /* signature: flip cards */
+  document.querySelectorAll(".flip").forEach(function(c){
+    c.addEventListener("click", function(){
+      c.setAttribute("aria-pressed", c.getAttribute("aria-pressed") === "true" ? "false" : "true");
+    });
+  });
+
+  /* easter egg: click the monogram 3 times, or click "The End", or type "action" */
+  var clap = document.getElementById("clap"), cut = document.getElementById("cut"), n = 0, buf = "";
+  function roll(){
+    clap.classList.add("on"); cut.focus();
+    if(!reduce){ body.classList.add("flick"); setTimeout(function(){ body.classList.remove("flick"); }, 520); }
+  }
+  document.getElementById("monogram").addEventListener("click", function(){ if(++n >= 3){ n = 0; roll(); } });
+  document.getElementById("theend").addEventListener("click", roll);
+  addEventListener("keydown", function(e){
+    if(e.key === "Escape") clap.classList.remove("on");
+    buf = (buf + e.key.toLowerCase()).slice(-6);
+    if(buf === "action") roll();
+  });
+  cut.addEventListener("click", function(){ clap.classList.remove("on"); });
+  clap.addEventListener("click", function(e){ if(e.target === clap) clap.classList.remove("on"); });
+})();
+</script>
+</body>
+</html>
